@@ -7,8 +7,29 @@ import AddOption from "./components/AddOption";
 import Action from "./components/Action";
 import RemoveAll from "./components/RemoveAll";
 import Counter from "./components/Counter";
+import OptionModal from "./components/OptionModal";
 
 console.log(validator.isEmail("sandroarobeliyahoo.com"));
+/*
+const Layout = (props) => {
+  return (
+    <div>
+      <p>Header</p>
+      {props.children}
+      <p>Footer</p>
+    </div>
+  );
+};
+// USING children PROPS
+ReactDOM.render((
+  <Layout>
+   <div>
+     <h1>Page Title</h1>
+     <p>This is my Page</p>
+   </div>
+  </Layout>
+  ), document.getElementById('root'))
+*/
 
 class App extends React.Component {
   constructor(props) {
@@ -28,6 +49,7 @@ class App extends React.Component {
     this.removeOption = this.removeOption.bind(this);
     this.handleIncrement = this.handleIncrement.bind(this);
     this.handleDecrement = this.handleDecrement.bind(this);
+    this.handleClear = this.handleClear.bind(this);
   }
   // Fires after the Component first mounts
   componentDidMount() {
@@ -132,6 +154,9 @@ class App extends React.Component {
       return { count: prevState.count - 1 };
     });
   }
+  handleClear() {
+    this.setState(() => ({ decision: "" }));
+  }
   render() {
     return (
       <div className="App">
@@ -167,6 +192,10 @@ class App extends React.Component {
           decision={this.state.decision}
         />
         <RemoveAll handleRemoveAll={this.handleRemoveAll} />
+        <OptionModal
+          decision={this.state.decision}
+          handleClear={this.handleClear}
+        />
       </div>
     );
   }
