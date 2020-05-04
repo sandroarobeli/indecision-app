@@ -1,0 +1,23 @@
+// Syntax for partial styles file starts with _file
+html {
+  // Setting to 62.5% allows us to convert
+  // 1Rem from 16px base to 10px base
+  // Thus making implicit conversion calculation
+  // Much more intuitive
+  font-size: 62.5%;
+}
+// Note: base file handles element level styles
+// button Vs. .big-button etc
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: $m-size;
+  background: $dark-blue;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}

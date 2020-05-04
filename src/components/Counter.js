@@ -1,9 +1,10 @@
 import React from "react";
 
 const Counter = (props) => (
-  <div>
-    <h4>
+  <div className="counter" style={{ color: "white" }}>
+    <div className="">
       <button
+        className="btn__decrement"
         disabled={props.count === 0}
         type="button"
         onClick={props.handleDecrement}
@@ -11,10 +12,14 @@ const Counter = (props) => (
         -
       </button>
       Count: {props.count}
-      <button type="button" onClick={props.handleIncrement}>
+      <button
+        className="btn__increment"
+        type="button"
+        onClick={props.handleIncrement}
+      >
         +
       </button>
-    </h4>
+    </div>
   </div>
 );
 

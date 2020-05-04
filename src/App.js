@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+// import "./App.css";
 import validator from "validator";
 import Header from "./components/Header.js";
 import Options from "./components/Options.js";
@@ -8,6 +8,12 @@ import Action from "./components/Action";
 import RemoveAll from "./components/RemoveAll";
 import Counter from "./components/Counter";
 import OptionModal from "./components/OptionModal";
+// Using SCSS in this project (learning)
+// requires--> yarn add sass-loader node-sass <--
+// NORMALIZE is used to bring ALL the
+// different browsers to same styling!
+import "normalize.css/normalize.css";
+import "./styles/styles.scss";
 
 console.log(validator.isEmail("sandroarobeliyahoo.com"));
 /*
@@ -160,7 +166,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <button type="button" onClick={this.handleToggle}>
+        <button
+          className="btn btn-toggler"
+          type="button"
+          onClick={this.handleToggle}
+        >
           {this.state.visibility ? "Hide details" : "Show details"}
         </button>
         <div>
@@ -176,22 +186,26 @@ class App extends React.Component {
           title="Indecision App"
           subtitle="Put your life in the hands of a computer"
         />
-        <Options
-          options={this.state.options}
-          removeOption={this.removeOption}
-        />
-        <AddOption
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-          input={this.state.input}
-        />
-        <h4>{this.state.decision}</h4>
-        <Action
-          onMakeDecision={this.onMakeDecision}
-          options={this.state.options}
-          decision={this.state.decision}
-        />
-        <RemoveAll handleRemoveAll={this.handleRemoveAll} />
+        <div className="container">
+          <Action
+            onMakeDecision={this.onMakeDecision}
+            options={this.state.options}
+            decision={this.state.decision}
+          />
+          <div className="widget">
+            <RemoveAll handleRemoveAll={this.handleRemoveAll} />
+            <Options
+              options={this.state.options}
+              removeOption={this.removeOption}
+            />
+            <AddOption
+              handleSubmit={this.handleSubmit}
+              handleChange={this.handleChange}
+              input={this.state.input}
+            />
+          </div>
+          <h4>{this.state.decision}</h4>
+        </div>
         <OptionModal
           decision={this.state.decision}
           handleClear={this.handleClear}

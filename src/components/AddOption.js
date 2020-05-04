@@ -1,15 +1,18 @@
 import React from "react";
 
 const AddOption = (props) => (
-  <form onSubmit={props.handleSubmit}>
+  <form className="add-option" onSubmit={props.handleSubmit}>
     <input
+      className="add-option__input"
       type="text"
       name="option"
       onChange={props.handleChange}
       value={props.input}
       placeholder="type new option here"
     />
-    <button type="submit">Add Option</button>
+    <button className="button" type="submit">
+      Add Option
+    </button>
   </form>
 );
 

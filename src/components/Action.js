@@ -3,6 +3,7 @@ import React from "react";
 const Action = (props) => (
   <div>
     <button
+      className="big-button"
       disabled={props.options.length === 0 || props.decision}
       type="button"
       onClick={props.onMakeDecision}
